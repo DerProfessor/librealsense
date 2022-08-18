@@ -57,7 +57,7 @@ case ${JETSON_L4T_VERSION} in
     PATCHES_REV="4.4"		# Baseline for the patches
     echo -e "\e[32mNote: the patch makes changes to kernel device tree to support HID IMU sensors\e[0m"
     ;;
-  "32.4.4" | "32.5" | "32.5.1" | "32.6.1")
+  "32.4.4" | "32.5" | "32.5.1" | "32.6.1" | "32.7.2")
     PATCHES_REV="4.4.1"	# JP 4.4.1
     ;;
   *)
@@ -66,6 +66,13 @@ case ${JETSON_L4T_VERSION} in
     ;;
 esac
 echo -e "\e[32mL4T ${JETSON_L4T_VERSION} to use patches revision ${PATCHES_REV}\e[0m"
+
+case ${JETSON_L4T_VERSION} in
+  "32.7.2")
+    echo -e "Overriding JETSON_L4T_VERSION from 4.6.2 to 4.6.1"
+    JETSON_L4T_VERSION="32.7.1"
+    ;;
+esac
 
 
 # Get the linux kernel repo, extract the L4T tag
